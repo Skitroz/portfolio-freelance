@@ -12,18 +12,18 @@ function NotFound() {
                         404 - Page non trouvée
                     </h1>
                     <p className="max-w-[700px] text-lg text-muted-foreground sm:text-xl">
-                        Oops! La page que vous recherchez n`&apos;`existe pas.
+                        Oops! La page que vous recherchez n&apos;existe pas.
                     </p>
                 </div>
                 <div className="flex gap-4">
                     <Button asChild>
                         <Link href="/">
-                            Retour à l`&apos;`accueil
+                            Retour à l&apos;accueil
                         </Link>
                     </Button>
                     <Button variant="outline" asChild>
                         <Link href="/contact">
-                            Contactez l`&apos;`administrateur
+                            Contactez l&apos;administrateur
                         </Link>
                     </Button>
                 </div>

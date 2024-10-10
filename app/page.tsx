@@ -42,7 +42,7 @@ export default function Home() {
       )}
       <div className="bg-gray-800 text-gray-300">
         <section className="text-center py-16 md:py-32 lg:py-48">
-          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 mt-16">Salut, je m`&apos;`appelle Mathéo !</h1>
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 mt-16">Salut, je m&apos;appelle Mathéo !</h1>
           <p className="text-md md:text-lg lg:text-xl mb-8 mx-4">
             Je crée des sites web réactifs et efficaces qui apportent de la valeur à votre entreprise.
           </p>
