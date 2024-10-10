@@ -1,101 +1,143 @@
-import Image from "next/image";
+"use client";
+
+import { Button } from "@/components/ui/button";
+import ScrollDownButton from "@/components/ScrollDownButton";
+import { useRouter } from "next/navigation";
+import SkillProgress from "@/components/SkillProgress";
+import { FaArrowUp } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const router = useRouter();
+  const [isVisible, setIsVisible] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  return (
+    <>
+      { isVisible && (
+      <div className="fixed bottom-4 right-4">
+        <Button onClick={scrollToTop} variant="outline" size="icon">
+          <FaArrowUp className="h-6 w-6" />
+        </Button>
+      </div>
+      )}
+      <div className="bg-gray-800 text-gray-300">
+        <section className="text-center py-16 md:py-32 lg:py-48">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-4 mt-16">Salut, je m`&apos;`appelle Mathéo !</h1>
+          <p className="text-md md:text-lg lg:text-xl mb-8 mx-4">
+            Je crée des sites web réactifs et efficaces qui apportent de la valeur à votre entreprise.
+          </p>
+          <Button size="lg" variant="btn">Voir mon travail</Button>
+          <ScrollDownButton targetId="services" />
+        </section>
+        <div id="services" className="mb-[100px] mt-[-100px]"></div>
+        <section>
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-center mb-12">Mes services</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 justify-items-center">
+            <div className="bg-gray-700 w-[90%] md:w-[80%] lg:w-[60%] p-8 rounded-lg shadow-lg">
+              <h3 className="text-lg md:text-xl lg:text-2xl font-bold mb-4">Développement web</h3>
+              <p className="mb-4">
+                Création de sites web modernes et réactifs, adaptés à tous les appareils.
+              </p>
+              <Button variant="btn" size="sm" onClick={() => router.push("/developpement-web")}>
+                En savoir plus
+              </Button>
+            </div>
+            <div className="bg-gray-700 w-[90%] md:w-[80%] lg:w-[60%] p-8 rounded-lg shadow-lg">
+              <h3 className="text-lg md:text-xl lg:text-2xl font-bold mb-4">Optimisation SEO</h3>
+              <p className="text-md md:text-lg lg:text-xl mb-4">
+                Optimisation de votre site web pour les moteurs de recherche.
+              </p>
+              <Button variant="btn" size="sm" onClick={() => router.push("/seo")}>
+                En savoir plus
+              </Button>
+            </div>
+            <div className="bg-gray-700 w-[90%] md:w-[80%] lg:w-[60%] p-8 rounded-lg shadow-lg">
+              <h3 className="text-lg md:text-xl lg:text-2xl font-bold mb-4">Développement mobile</h3>
+              <p className="text-md md:text-lg lg:text-xl mb-4">
+                Création de sites web mobiles compatibles avec iOS et Android.
+              </p>
+              <Button variant="btn" size="sm" onClick={() => router.push("/developpement-mobile")}>
+                En savoir plus
+              </Button>
+            </div>
+            <div className="bg-gray-700 w-[90%] md:w-[80%] lg:w-[60%] p-8 rounded-lg shadow-lg">
+              <h3 className="text-lg md:text-xl lg:text-2xl font-bold mb-4">Intégration de données</h3>
+              <p className="text-md md:text-lg lg:text-xl mb-4">
+                Intégration de données de votre base de données dans votre site web.
+              </p>
+              <Button variant="btn" size="sm" onClick={() => router.push("/integration-donnees")}>
+                En savoir plus
+              </Button>
+            </div>
+          </div>
+        </section>
+        <div id="competences" className="mb-[100px]"></div>
+        <section className="text-center mt-[60px] md:mt-[80px]] lg:mt-[100px]">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-8">Mes compétences</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-10 justify-items-center">
+            <div className="bg-gray-700 w-[90%] md:w-[80%] lg:w-[60%] p-8 rounded-lg shadow-lg">
+              <h3 className="text-lg md:text-xl lg:text-2xl font-bold mb-4">HTML5</h3>
+              <SkillProgress percentage={95} />
+            </div>
+            <div className="bg-gray-700 w-[90%] md:w-[80%] lg:w-[60%] p-8 rounded-lg shadow-lg">
+              <h3 className="text-lg md:text-xl lg:text-2xl font-bold mb-4">CSS3</h3>
+              <SkillProgress percentage={85} />
+            </div>
+            <div className="bg-gray-700 w-[90%] md:w-[80%] lg:w-[60%] p-8 rounded-lg shadow-lg">
+              <h3 className="text-lg md:text-xl lg:text-2xl font-bold mb-4">JavaScript</h3>
+              <SkillProgress percentage={80} />
+            </div>
+            <div className="bg-gray-700 w-[90%] md:w-[80%] lg:w-[60%] p-8 rounded-lg shadow-lg">
+              <h3 className="text-lg md:text-xl lg:text-2xl font-bold mb-4">React</h3>
+              <SkillProgress percentage={75} />
+            </div>
+            <div className="bg-gray-700 w-[90%] md:w-[80%] lg:w-[60%] p-8 rounded-lg shadow-lg">
+              <h3 className="text-lg md:text-xl lg:text-2xl font-bold mb-4">Next.js</h3>
+              <SkillProgress percentage={70} />
+            </div>
+            <div className="bg-gray-700 w-[90%] md:w-[80%] lg:w-[60%] p-8 rounded-lg shadow-lg">
+              <h3 className="text-lg md:text-xl lg:text-2xl font-bold mb-4">Node.js</h3>
+              <SkillProgress percentage={65} />
+            </div>
+            <div className="bg-gray-700 w-[90%] md:w-[80%] lg:w-[60%] p-8 rounded-lg shadow-lg">
+              <h3 className="text-lg md:text-xl lg:text-2xl font-bold mb-4">WordPress</h3>
+              <SkillProgress percentage={90} />
+            </div>
+            <div className="bg-gray-700 w-[90%] md:w-[80%] lg:w-[60%] p-8 rounded-lg shadow-lg">
+              <h3 className="text-lg md:text-xl lg:text-2xl font-bold mb-4">MySQL</h3>
+              <SkillProgress percentage={80} />
+            </div>
+            <div className="bg-gray-700 w-[90%] md:w-[80%] lg:w-[60%] p-8 rounded-lg shadow-lg">
+              <h3 className="text-lg md:text-xl lg:text-2xl font-bold mb-4">PHP</h3>
+              <SkillProgress percentage={75} />
+            </div>
+          </div>
+        </section>
+        <div id="competences" className="mb-[100px]"></div>
+        <section className="text-center mt-[60px] md:mt-[80px]] lg:mt-[100px] pb-8" id="portfolio">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-8">Mes projets récents</h2>
+        </section>
+      </div>
+    </>
   );
 }
