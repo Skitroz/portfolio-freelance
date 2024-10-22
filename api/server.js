@@ -7,13 +7,13 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const PORT = 3003;
+const PORT = 3004;
 
 const pool = mysql.createPool({
-  user: "rootnws",
+  user: "root",
   host: "localhost",
-  database: "portfolio",
-  password: "root",
+  database: "jwin_db",
+  password: "AU}d.S[5R5&6)r8",
   port: 3306,
 });
 

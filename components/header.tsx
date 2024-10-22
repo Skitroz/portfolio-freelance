@@ -12,6 +12,7 @@ export default function Component() {
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
     const [isSticky, setIsSticky] = useState(false);
+
     useEffect(() => {
         const hash = window.location.hash;
         if (hash) {
@@ -25,8 +26,6 @@ export default function Component() {
         }
 
         const handleScroll = () => {
-            
-
             if (window.scrollY > 100) {
                 setIsSticky(true);
             } else {
@@ -45,7 +44,6 @@ export default function Component() {
     };
 
     const closeMenuAndScroll = (event: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
-        event.preventDefault();
         closeMenu();
     
         setTimeout(() => {
@@ -70,19 +68,19 @@ export default function Component() {
                         <Link href="/" className="flex w-full items-center py-2 text-lg font-semibold" prefetch={false} onClick={(event) => closeMenuAndScroll(event, '/')}>
                             <FaHome />
                         </Link>
-                        <Link href="#services" className="flex w-full items-center py-2 text-lg font-semibold" prefetch={false} onClick={(event) => closeMenuAndScroll(event, 'services')}>
+                        <Link href="/#services" className="flex w-full items-center py-2 text-lg font-semibold" prefetch={false} onClick={(event) => closeMenuAndScroll(event, 'services')}>
                             Services
                         </Link>
-                        <Link href="#competences" className="flex w-full items-center py-2 text-lg font-semibold" prefetch={false} onClick={(event) => closeMenuAndScroll(event, 'competences')}>
+                        <Link href="/#competences" className="flex w-full items-center py-2 text-lg font-semibold" prefetch={false} onClick={(event) => closeMenuAndScroll(event, 'competences')}>
                             Compétences
                         </Link>
-                        <Link href="#portfolio" className="flex w-full items-center py-2 text-lg font-semibold" prefetch={false} onClick={(event) => closeMenuAndScroll(event, 'portfolio')}>
+                        <Link href="/#portfolio" className="flex w-full items-center py-2 text-lg font-semibold" prefetch={false} onClick={(event) => closeMenuAndScroll(event, 'portfolio')}>
                             Portfolio
                         </Link>
-                        <Link href="#a-propos" className="flex w-full items-center py-2 text-lg font-semibold" prefetch={false} onClick={(event) => closeMenuAndScroll(event, 'a-propos')}>
+                        <Link href="/#a-propos" className="flex w-full items-center py-2 text-lg font-semibold" prefetch={false} onClick={(event) => closeMenuAndScroll(event, 'a-propos')}>
                             À propos
                         </Link>
-                        <Link href="#contact" className="flex w-full items-center py-2 text-lg font-semibold" prefetch={false} onClick={(event) => closeMenuAndScroll(event, 'contact')}>
+                        <Link href="/#contact" className="flex w-full items-center py-2 text-lg font-semibold" prefetch={false} onClick={(event) => closeMenuAndScroll(event, 'contact')}>
                             Contact
                         </Link>
                     </div>
@@ -92,7 +90,6 @@ export default function Component() {
                 <div className="w-12 h-12 bg-gradient-to-br from-cyan-900 to-blue-700 rounded-lg shadow-lg flex items-center justify-center">
                     <div className="text-white text-xl font-mono transform -rotate-12">
                         {'{'}
-
                         <span className="inline-block transform rotate-12 translate-y-1">{'}'}</span>
                     </div>
                 </div>
@@ -100,47 +97,47 @@ export default function Component() {
             <nav className="ml-auto hidden lg:flex gap-6">
                 <Link
                     href="/"
-                    className="group inline-flex h-9 w-max items-center justify-center border border-1 border-gray-800 hover:bg-gray-800 hover:text-white rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50"
+                    className="group inline-flex h-9 w-max items-center justify-center border border-1 border-gray-800 hover:bg-gray-800 hover:text-white rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                     prefetch={false}
                     onClick={closeMenu}
                 >
                     <FaHome />
                 </Link>
                 <Link
-                    href="#services"
-                    className="group inline-flex h-9 w-max items-center justify-center border border-1 border-gray-800 hover:bg-gray-800 hover:text-white rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50"
+                    href="/#services"
+                    className="group inline-flex h-9 w-max items-center justify-center border border-1 border-gray-800 hover:bg-gray-800 hover:text-white rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                     prefetch={false}
                     onClick={closeMenu}
                 >
                     Services
                 </Link>
                 <Link
-                    href="#competences"
-                    className="group inline-flex h-9 w-max items-center justify-center border border-1 border-gray-800 hover:bg-gray-800 hover:text-white rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50"
+                    href="/#competences"
+                    className="group inline-flex h-9 w-max items-center justify-center border border-1 border-gray-800 hover:bg-gray-800 hover:text-white rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                     prefetch={false}
                     onClick={closeMenu}
                 >
                     Compétences
                 </Link>
                 <Link
-                    href="#portfolio"
-                    className="group inline-flex h-9 w-max items-center justify-center border border-1 border-gray-800 hover:bg-gray-800 hover:text-white rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50"
+                    href="/#portfolio"
+                    className="group inline-flex h-9 w-max items-center justify-center border border-1 border-gray-800 hover:bg-gray-800 hover:text-white rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                     prefetch={false}
                     onClick={closeMenu}
                 >
                     Portfolio
                 </Link>
                 <Link
-                    href="#a-propos"
-                    className="group inline-flex h-9 w-max items-center justify-center border border-1 border-gray-800 hover:bg-gray-800 hover:text-white rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50"
+                    href="/#a-propos"
+                    className="group inline-flex h-9 w-max items-center justify-center border border-1 border-gray-800 hover:bg-gray-800 hover:text-white rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                     prefetch={false}
                     onClick={closeMenu}
                 >
                     À propos
                 </Link>
                 <Link
-                    href="#contact"
-                    className="group inline-flex h-9 w-max items-center justify-center border border-1 border-gray-800 hover:bg-gray-800 hover:text-white rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50"
+                    href="/#contact"
+                    className="group inline-flex h-9 w-max items-center justify-center border border-1 border-gray-800 hover:bg-gray-800 hover:text-white rounded-md px-4 py-2 text-sm font-medium transition-colors focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                     prefetch={false}
                     onClick={closeMenu}
                 >
